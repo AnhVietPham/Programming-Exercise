@@ -5,10 +5,6 @@ using namespace std;
 
 int maxInt = INT_MAX;
 
-int minAboveBadSolution(int a[], int size, int k)
-{
-}
-
 int minAboveBetterSolution(int a[], int size, int k)
 {
        int minDistance = maxInt;
