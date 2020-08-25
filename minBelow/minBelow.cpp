@@ -29,7 +29,7 @@ int main()
 {
        int arr[] = {5, 3, 6, 4, 8, 11, 9, 7};
        int arraySize = sizeof(arr) / sizeof(arr[0]);
-       long maxBelow = minAboveBetterSolution(arr, arraySize, 2);
-       cout << "Value of min above is " << maxBelow;
+       long minAbove = minAboveBetterSolution(arr, arraySize, 2);
+       cout << "Value of min above is " << minAbove;
        return 0;
 }
