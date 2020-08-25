@@ -3,17 +3,16 @@
 
 using namespace std;
 
-long maxLong = LONG_MAX;
+int maxInt = INT_MAX;
 
 int minAboveBadSolution(int a[], int size, int k)
 {
-       
 }
 
 int minAboveBetterSolution(int a[], int size, int k)
 {
-       long minDistance = maxLong;
-       long minAbove = 0;
+       int minDistance = maxInt;
+       int minAbove = 0;
        for (int i = 0; i < size; i++)
        {
               if (a[i] != a[k] && (a[i] - a[k] > 0) && (a[i] - a[k] < minDistance))
@@ -25,11 +24,26 @@ int minAboveBetterSolution(int a[], int size, int k)
        return minAbove;
 }
 
+int minAbove2BetterSolution(int a[], int size, int k)
+{
+       int minAbove = maxInt;
+       for (int i = 0; i < size; i++)
+       {
+              if (a[i] > a[k])
+              {
+                     minAbove = minAbove > a[i] ? a[i] : minAbove;
+              }
+       }
+       return minAbove;
+}
+
 int main()
 {
        int arr[] = {5, 3, 6, 4, 8, 11, 9, 7};
        int arraySize = sizeof(arr) / sizeof(arr[0]);
-       long minAbove = minAboveBetterSolution(arr, arraySize, 2);
+       int minAbove = minAboveBetterSolution(arr, arraySize, 2);
+       int min2Above = minAbove2BetterSolution(arr, arraySize, 2);
        cout << "Value of min above is " << minAbove;
+       cout << "Value of min above is 2 " << min2Above;
        return 0;
 }
