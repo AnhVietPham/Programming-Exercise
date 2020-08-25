@@ -11,7 +11,7 @@ int minAboveBetterSolution(int a[], int size, int k)
        int minAbove = 0;
        for (int i = 0; i < size; i++)
        {
-              if (a[i] != a[k] && (a[i] - a[k] > 0) && (a[i] - a[k] < minDistance))
+              if (a[i] - a[k] > 0 && (a[i] - a[k] < minDistance))
               {
                      minDistance = a[i] - a[k];
                      minAbove = a[i];
@@ -35,10 +35,10 @@ int minAbove2BetterSolution(int a[], int size, int k)
 
 int main()
 {
-       int arr[] = {5, 3, 6, 4, 8, 11, 9, 7};
+       int arr[] = {5, 3, 6, 4, 8, 6, 11, 9, 7};
        int arraySize = sizeof(arr) / sizeof(arr[0]);
-       int minAbove = minAboveBetterSolution(arr, arraySize, 2);
-       int min2Above = minAbove2BetterSolution(arr, arraySize, 2);
+       int minAbove = minAboveBetterSolution(arr, arraySize, 1);
+       int min2Above = minAbove2BetterSolution(arr, arraySize, 1);
        cout << "Value of min above is " << minAbove;
        cout << "Value of min above is 2 " << min2Above;
        return 0;
