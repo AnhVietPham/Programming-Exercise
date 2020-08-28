@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int longestHill(int a[], int n)
+int longestInCreasingDecreasingSubArray(int a[], int n)
 {
        int max = 1;
        int lenOfSubArray = 1;
@@ -36,7 +36,7 @@ int main()
        int arr[] = {2, 3, 5, 6, 4, 7, 8, 9, 10, 11, 15, 14, 1, 6, 4};
        int arrSize = sizeof(arr) / sizeof(arr[0]);
 
-       cout << "Value of LongestHill is: " << longestHill(arr, arrSize);
+       cout << "Value of LongestHill is: " << longestInCreasingDecreasingSubArray(arr, arrSize);
 
        return 0;
 }
