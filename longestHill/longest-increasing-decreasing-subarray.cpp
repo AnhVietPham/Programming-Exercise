@@ -15,7 +15,10 @@ int longestInCreasingDecreasingSubArray(int a[], int n)
               }
               else
               {
-                     lenOfSubArray++;
+                     if (lenOfSubArray > 1)
+                     {
+                            lenOfSubArray++;
+                     }
                      if (a[i + 1] > a[i])
                      {
                             if (max < lenOfSubArray)
@@ -27,14 +30,22 @@ int longestInCreasingDecreasingSubArray(int a[], int n)
               }
        }
 
+       if (max < lenOfSubArray)
+       {
+              max = lenOfSubArray;
+       }
+       
+
        return max;
 }
 
 int main()
 {
 
-       int arr[] = {2, 3, 5, 6, 4, 7, 8, 9, 10, 11, 15, 14, 1, 6, 4};
+       int arr[] = {7, 6, 5, 4, 3, 2, 9, 11, 12, 10, 8};
        int arrSize = sizeof(arr) / sizeof(arr[0]);
+       arr[arrSize] = 0;
+       cout << "Size of Array" << arrSize;
 
        cout << "Value of LongestHill is: " << longestInCreasingDecreasingSubArray(arr, arrSize);
 
