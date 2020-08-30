@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <vector> 
 using namespace std;
 
 int longestInCreasingDecreasingSubArray(int a[], int n)
@@ -41,13 +41,8 @@ int longestInCreasingDecreasingSubArray(int a[], int n)
 
 int main()
 {
-
-       int arr[] = {7, 6, 5, 4, 3, 2, 9, 11, 12, 10, 8};
+       int arr[] = {7, 6, 5, 4, 3, 2, 9, 11, 12, 10, 8, 0};
        int arrSize = sizeof(arr) / sizeof(arr[0]);
-       arr[arrSize] = 0;
-       cout << "Size of Array" << arrSize;
-
        cout << "Value of LongestHill is: " << longestInCreasingDecreasingSubArray(arr, arrSize);
-
        return 0;
 }
