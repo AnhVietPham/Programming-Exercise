@@ -40,8 +40,8 @@ int main()
 {
        int n = 3;
        cout << "Recursion S(n) is " << recursion_731(n) << "\n";
-       cout << "Recursion S(n) is " << tail_recursion_731(n) << "\n";
-       cout << "Recursion S(n) is " << naive_code_731(n) << "\n";
+       cout << "Tail Recursion S(n) is " << tail_recursion_731(n) << "\n";
+       cout << "Naive code S(n) is " << naive_code_731(n) << "\n";
 
        return 0;
 }

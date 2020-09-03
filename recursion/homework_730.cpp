@@ -38,7 +38,7 @@ int main()
 {
        int n = 5;
        cout << "Recursion S(n) is " << recursion_sum(n) << "\n";
-       cout << "Recursion S(n) is " << tail_recursion_sum(n) << "\n";
-       cout << "Recursion S(n) is " << naive_code_sum(n) << "\n";
+       cout << "Tail Recursion S(n) is " << tail_recursion_sum(n) << "\n";
+       cout << "Naive code S(n) is " << naive_code_sum(n) << "\n";
        return 0;
 }
