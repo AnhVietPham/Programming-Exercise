@@ -2,6 +2,8 @@
 
 using namespace std;
 
+// Non-linear Recursion.
+
 int calculate_X_n(int n)
 {
        int sum = 0;
