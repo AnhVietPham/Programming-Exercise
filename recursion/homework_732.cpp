@@ -2,6 +2,8 @@
 
 using namespace std;
 
+// S(n) = 1 + 1/2 + 1/3 + ... + 1/n
+
 float recursion_732(int n)
 {
        if (n == 0)
