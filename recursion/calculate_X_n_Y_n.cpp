@@ -43,8 +43,6 @@ int unique_Y_n(int n)
        {
               return 3;
        }
-       
-       
 
        return 3 * unique_Y_n(n - 1) + unique_Y_n(n - 2);
 }
