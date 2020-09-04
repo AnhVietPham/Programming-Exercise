@@ -38,8 +38,8 @@ int main()
 {
        int n = 3;
        int x = 2;
-       cout<< "Recursion T(n,x) is "<< recursion_739(n,2)<<"\n";
-       cout<< "Tail Recursion T(n,x) is "<< tail_recursion_739(n,2)<<"\n";
-       cout<< "Naive code T(n,x) is "<< naive_code_739(n,2)<<"\n";
+       cout << "Recursion T(n,x) is " << recursion_739(n, 2) << "\n";
+       cout << "Tail Recursion T(n,x) is " << tail_recursion_739(n, 2) << "\n";
+       cout << "Naive code T(n,x) is " << naive_code_739(n, 2) << "\n";
        return 0;
 }
