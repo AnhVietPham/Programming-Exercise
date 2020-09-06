@@ -55,6 +55,15 @@ int find_max(int a[], int n, int i = 0, int Max = 0)
        return find_max(a, n, i + 1, a[i] > Max ? a[i] : Max);
 }
 
+int sum_1d_array(int a[], int n, int i = 0, int sum = 0)
+{
+       if (i == n)
+       {
+              return sum;
+       }
+       return sum_1d_array(a, n, i + 1, sum + a[i]);
+}
+
 int main()
 {
        int n = 5;
@@ -63,5 +72,6 @@ int main()
        output_one_dimensional_array(a, n);
        cout << "\n Min in 1D-Array is: " << find_min(a, n);
        cout << "\n Max in 1D-Array is: " << find_max(a, n);
+       cout << "\n Sum of all element in 1D-Array is: " << sum_1d_array(a, n);
        return 0;
 }
