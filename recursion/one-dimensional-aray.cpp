@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits.h>
 
 using namespace std;
 
@@ -34,11 +35,23 @@ void output_one_dimensional_array(int a[], int n, int i = 0)
        output_one_dimensional_array(a, n, i + 1);
 }
 
+int find_min(int a[], int n, int i = 0, int Min = INT_MAX)
+{
+       if (i == n)
+       {
+              return Min;
+       }
+
+       return find_min(a, n, i + 1, a[i] < Min ? a[i] : Min);
+}
+
 int main()
 {
        int n = 5;
        int a[1000];
        input_one_dimensional_array(a, n);
        output_one_dimensional_array(a, n);
+
+       cout << "\n Min in 1D-Array is: " << find_min(a, n);
        return 0;
 }
