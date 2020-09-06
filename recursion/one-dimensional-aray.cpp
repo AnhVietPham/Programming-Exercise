@@ -45,13 +45,23 @@ int find_min(int a[], int n, int i = 0, int Min = INT_MAX)
        return find_min(a, n, i + 1, a[i] < Min ? a[i] : Min);
 }
 
+int find_max(int a[], int n, int i = 0, int Max = 0)
+{
+       if (i == n)
+       {
+              return Max;
+       }
+
+       return find_max(a, n, i + 1, a[i] > Max ? a[i] : Max);
+}
+
 int main()
 {
        int n = 5;
        int a[1000];
        input_one_dimensional_array(a, n);
        output_one_dimensional_array(a, n);
-
        cout << "\n Min in 1D-Array is: " << find_min(a, n);
+       cout << "\n Max in 1D-Array is: " << find_max(a, n);
        return 0;
 }
