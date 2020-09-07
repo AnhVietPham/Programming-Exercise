@@ -74,15 +74,58 @@ int quantity_of_even_number_1d_array(int a[], int n, int i = 0, int count = 0)
        return quantity_of_even_number_1d_array(a, n, i + 1, a[i] % 2 == 0 ? count + 1 : count);
 }
 
+int quantity_of_odd_number_1d_array(int a[], int n, int i = 0, int count = 0)
+{
+       if (i == n)
+       {
+              return count;
+       }
+
+       return quantity_of_odd_number_1d_array(a, n, i + 1, a[i] % 2 != 0 ? count + 1 : count);
+}
+
+void swap(int &a, int &b)
+{
+       int temp = a;
+       a = b;
+       b = temp;
+}
+
+void arrange_increasing_1d_array(int *a, int n, int i = 0)
+{
+       if (i == n)
+       {
+              return;
+       }
+
+       for (int j = i + 1; j < n; j++)
+       {
+              if (a[i] > a[j])
+              {
+                     swap(a[i], a[j]);
+              }
+       }
+       arrange_increasing_1d_array(a, n, i + 1);
+}
+
+void arrange_decreasing_1d_array(int a[], int n, int i = 0)
+{
+}
 int main()
 {
        int n = 7;
-       int a[1000];
+       int *a = new int[n];
        input_one_dimensional_array(a, n);
        output_one_dimensional_array(a, n);
        cout << "\n Min in 1D-Array is: " << find_min(a, n);
        cout << "\n Max in 1D-Array is: " << find_max(a, n);
        cout << "\n Sum of all element in 1D-Array is: " << sum_1d_array(a, n);
        cout << "\n Quantity of even number in 1D-Array is: " << quantity_of_even_number_1d_array(a, n);
+       cout << "\n Quantity of odd number in 1D-Array is: " << quantity_of_odd_number_1d_array(a, n);
+       cout << "\n Increasing 1D-Arra is: ";
+       arrange_increasing_1d_array(a, n);
+       output_one_dimensional_array(a, n);
+
+       delete[] a;
        return 0;
 }
