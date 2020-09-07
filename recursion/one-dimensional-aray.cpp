@@ -13,7 +13,7 @@ using namespace std;
  Note: Only using recursion
 */
 
-void input_one_dimensional_array(int a[], int n, int i = 0)
+void input_one_dimensional_array(int *a, int n, int i = 0)
 {
        if (i == n)
        {
@@ -25,7 +25,7 @@ void input_one_dimensional_array(int a[], int n, int i = 0)
        input_one_dimensional_array(a, n, i + 1);
 }
 
-void output_one_dimensional_array(int a[], int n, int i = 0)
+void output_one_dimensional_array(int *a, int n, int i = 0)
 {
        if (i == n)
        {
@@ -35,7 +35,7 @@ void output_one_dimensional_array(int a[], int n, int i = 0)
        output_one_dimensional_array(a, n, i + 1);
 }
 
-int find_min(int a[], int n, int i = 0, int Min = INT_MAX)
+int find_min(int *a, int n, int i = 0, int Min = INT_MAX)
 {
        if (i == n)
        {
@@ -45,7 +45,7 @@ int find_min(int a[], int n, int i = 0, int Min = INT_MAX)
        return find_min(a, n, i + 1, a[i] < Min ? a[i] : Min);
 }
 
-int find_max(int a[], int n, int i = 0, int Max = 0)
+int find_max(int *a, int n, int i = 0, int Max = 0)
 {
        if (i == n)
        {
@@ -55,7 +55,7 @@ int find_max(int a[], int n, int i = 0, int Max = 0)
        return find_max(a, n, i + 1, a[i] > Max ? a[i] : Max);
 }
 
-int sum_1d_array(int a[], int n, int i = 0, int sum = 0)
+int sum_1d_array(int *a, int n, int i = 0, int sum = 0)
 {
        if (i == n)
        {
@@ -64,7 +64,7 @@ int sum_1d_array(int a[], int n, int i = 0, int sum = 0)
        return sum_1d_array(a, n, i + 1, sum + a[i]);
 }
 
-int quantity_of_even_number_1d_array(int a[], int n, int i = 0, int count = 0)
+int quantity_of_even_number_1d_array(int *a, int n, int i = 0, int count = 0)
 {
        if (i == n)
        {
@@ -74,7 +74,7 @@ int quantity_of_even_number_1d_array(int a[], int n, int i = 0, int count = 0)
        return quantity_of_even_number_1d_array(a, n, i + 1, a[i] % 2 == 0 ? count + 1 : count);
 }
 
-int quantity_of_odd_number_1d_array(int a[], int n, int i = 0, int count = 0)
+int quantity_of_odd_number_1d_array(int *a, int n, int i = 0, int count = 0)
 {
        if (i == n)
        {
@@ -108,8 +108,21 @@ void arrange_increasing_1d_array(int *a, int n, int i = 0)
        arrange_increasing_1d_array(a, n, i + 1);
 }
 
-void arrange_decreasing_1d_array(int a[], int n, int i = 0)
+void arrange_decreasing_1d_array(int *a, int n, int i = 0)
 {
+       if (i == n)
+       {
+              return;
+       }
+
+       for (int j = i + 1; j < n; j++)
+       {
+              if (a[i] < a[j])
+              {
+                     swap(a[i], a[j]);
+              }
+       }
+       arrange_decreasing_1d_array(a, n, i + 1);
 }
 int main()
 {
@@ -122,10 +135,12 @@ int main()
        cout << "\n Sum of all element in 1D-Array is: " << sum_1d_array(a, n);
        cout << "\n Quantity of even number in 1D-Array is: " << quantity_of_even_number_1d_array(a, n);
        cout << "\n Quantity of odd number in 1D-Array is: " << quantity_of_odd_number_1d_array(a, n);
-       cout << "\n Increasing 1D-Arra is: ";
+       cout << "\n Increasing 1D-Array is: ";
        arrange_increasing_1d_array(a, n);
        output_one_dimensional_array(a, n);
-
+       cout << "\n Decreasing 1D-Array is: ";
+       arrange_decreasing_1d_array(a, n);
+       output_one_dimensional_array(a, n);
        delete[] a;
        return 0;
 }
