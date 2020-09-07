@@ -93,7 +93,14 @@ int sum_of_even_numer_1d_array(int *a, int n, int i = 0, int sum = 0)
        return sum_of_even_numer_1d_array(a, n, i + 1, a[i] % 2 == 0 ? sum + a[i] : sum);
 }
 
-
+int sum_of_odd_number_1d_array(int *a, int n, int i = 0, int sum = 0)
+{
+       if (i == n)
+       {
+              return sum;
+       }
+       return sum_of_odd_number_1d_array(a, n, i + 1, a[i] % 2 != 0 ? sum + a[i] : sum);
+}
 
 void swap(int &a, int &b)
 {
@@ -147,6 +154,7 @@ int main()
        cout << "\n Quantity of even number in 1D-Array is: " << quantity_of_even_number_1d_array(a, n);
        cout << "\n Quantity of odd number in 1D-Array is: " << quantity_of_odd_number_1d_array(a, n);
        cout << "\n Sum of even number in 1D-Array is: " << sum_of_even_numer_1d_array(a, n);
+       cout << "\n Sum of odd number in 1D-Array is: " << sum_of_odd_number_1d_array(a, n);
        cout << "\n Increasing 1D-Array is: ";
        arrange_increasing_1d_array(a, n);
        output_one_dimensional_array(a, n);
