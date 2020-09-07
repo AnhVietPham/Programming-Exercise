@@ -64,14 +64,25 @@ int sum_1d_array(int a[], int n, int i = 0, int sum = 0)
        return sum_1d_array(a, n, i + 1, sum + a[i]);
 }
 
+int quantity_of_even_number_1d_array(int a[], int n, int i = 0, int count = 0)
+{
+       if (i == n)
+       {
+              return count;
+       }
+
+       return quantity_of_even_number_1d_array(a, n, i + 1, a[i] % 2 == 0 ? count + 1 : count);
+}
+
 int main()
 {
-       int n = 5;
+       int n = 7;
        int a[1000];
        input_one_dimensional_array(a, n);
        output_one_dimensional_array(a, n);
        cout << "\n Min in 1D-Array is: " << find_min(a, n);
        cout << "\n Max in 1D-Array is: " << find_max(a, n);
        cout << "\n Sum of all element in 1D-Array is: " << sum_1d_array(a, n);
+       cout << "\n Quantity of even number in 1D-Array is: " << quantity_of_even_number_1d_array(a, n);
        return 0;
 }
