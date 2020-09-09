@@ -17,9 +17,9 @@ float n_sign_square_root_of_2_recursion_748(int n)
 
 float tail_n_sign_square_root_of_2_recursion_748(int n, float result = sqrt(2))
 {
-       if (n == 2)
+       if (n == 1)
        {
-              return sqrt(2 + result);
+              return result;
        }
 
        return tail_n_sign_square_root_of_2_recursion_748(n - 1, sqrt(2 + result));
@@ -39,7 +39,7 @@ float naive_code_n_sign_square_root_of_2_recursion_748(int n)
 
 int main()
 {
-       int n = 3;
+       int n = 1;
        cout << "N sign square of 2 Recursion is " << n_sign_square_root_of_2_recursion_748(n) << "\n";
        cout << "N sign square of 2 Tail Recursion is " << tail_n_sign_square_root_of_2_recursion_748(n) << "\n";
        cout << "N sign square of 2 Naive code is " << naive_code_n_sign_square_root_of_2_recursion_748(n);
