@@ -38,6 +38,48 @@ void output_2D_array(int **a, int row, int column, int i = 0)
        output_2D_array(a, row, column, i + 1);
 }
 
+int find_min(int **a, int row, int column, int i = 0){
+
+}
+
+int find_max(int **a, int row, int column, int i = 0){
+
+}
+
+int sum_2D_array(int **a, int row, int column, int i = 0, int sum = 0){
+
+}
+
+int quantity_of_even_number_2D_array(int **a, int row,int column, int i =0, int count = 0){
+
+}
+
+int quantity_of_odd_number_2D_array(int **a, int row, int column, int i = 0, int cout = 0){
+
+}
+
+int sum_of_even_numer_2D_array(int **a, int row, int column, int i = 0, int cout = 0){
+
+}
+
+int sum_of_odd_numer_2D_array(int **a, int row, int column, int i = 0, int cout = 0){
+
+}
+
+void swap(int &a, int &b){
+       int temp = a;
+       b = a;
+       a = temp;
+}
+
+void arrange_increasing_2D_array(int **a, int row, int column, int i = 0){
+
+}
+
+void arrange_decreasing_2D_array(int **a, int row, int column, int i = 0){
+       
+}
+
 int main()
 {
        int row = 3;
