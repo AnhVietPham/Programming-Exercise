@@ -106,16 +106,28 @@ int sum_of_odd_numer_2D_array(int **a, int row, int column, int i = 0, int sum =
        return sum_of_odd_numer_2D_array(a, row, column, i + 1, a[i / column][i % column] % 2 != 0 ? (sum + a[i / column][i % column]) : sum);
 }
 
-// void swap(int &a, int &b)
-// {
-//        int temp = a;
-//        b = a;
-//        a = temp;
-// }
+void swap(int &a, int &b)
+{
+       int temp = a;
+       a = b;
+       b = temp;
+}
 
-// void arrange_increasing_2D_array(int **a, int row, int column, int i = 0)
-// {
-// }
+void arrange_increasing_2D_array(int **a, int row, int column, int i = 0)
+{
+       if (i == row * column)
+       {
+              return;
+       }
+       for (int k = i + 1; k < row * column; k++)
+       {
+              if (a[i / column][i % column] > a[k / column][k % column])
+              {
+                     swap(a[i / column][i % column], a[k / column][k % column]);
+              }
+       }
+       return arrange_increasing_2D_array(a, row, column, i + 1);
+}
 
 // void arrange_decreasing_2D_array(int **a, int row, int column, int i = 0)
 // {
@@ -123,7 +135,7 @@ int sum_of_odd_numer_2D_array(int **a, int row, int column, int i = 0, int sum =
 
 int main()
 {
-       int row = 3;
+       int row = 4;
        int column = 3;
 
        int **a = new int *[row];
@@ -143,6 +155,8 @@ int main()
        cout << "\nQuantity of odd number of 2D-Array is: " << quantity_of_odd_number_2D_array(a, row, column);
        cout << "\nSum of even number of 2D-Array is: " << sum_of_even_numer_2D_array(a, row, column);
        cout << "\nSum of odd number of 2D-Array is: " << sum_of_odd_numer_2D_array(a, row, column);
-
+       cout << "\nIncreasing 2D-Array: ";
+       arrange_increasing_2D_array(a, row, column);
+       output_2D_array(a, row, column);
        return 0;
 }
