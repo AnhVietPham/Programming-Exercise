@@ -59,21 +59,37 @@ int find_max(int **a, int row, int column, int i = 0, int MAX = 0)
        return find_max(a, row, column, i + 1, a[i / column][i % column] > MAX ? a[i / column][i % column] : MAX);
 }
 
-// int sum_2D_array(int **a, int row, int column, int i = 0, int sum = 0)
-// {
-// }
+int sum_2D_array(int **a, int row, int column, int i = 0, int sum = 0)
+{
+       if (i == column * row)
+       {
+              return sum;
+       }
+       return sum_2D_array(a, row, column, i + 1, sum + a[i / column][i % column]);
+}
 
-// int quantity_of_even_number_2D_array(int **a, int row, int column, int i = 0, int count = 0)
-// {
-// }
+int quantity_of_even_number_2D_array(int **a, int row, int column, int i = 0, int count = 0)
+{
+       if (i == column * row)
+       {
+              return count;
+       }
+       return quantity_of_even_number_2D_array(a, row, column, i + 1, a[i / column][i % column] % 2 == 0 ? count + 1 : count);
+}
 
-// int quantity_of_odd_number_2D_array(int **a, int row, int column, int i = 0, int cout = 0)
-// {
-// }
+int quantity_of_odd_number_2D_array(int **a, int row, int column, int i = 0, int count = 0)
+{
+       if (i == column * row)
+       {
+              return count;
+       }
+       return quantity_of_odd_number_2D_array(a, row, column, i + 1, a[i / column][i % column] % 2 != 0 ? count + 1 : count);
+}
 
-// int sum_of_even_numer_2D_array(int **a, int row, int column, int i = 0, int cout = 0)
-// {
-// }
+int sum_of_even_numer_2D_array(int **a, int row, int column, int i = 0, int sum = 0)
+{
+      
+}
 
 // int sum_of_odd_numer_2D_array(int **a, int row, int column, int i = 0, int cout = 0)
 // {
@@ -111,7 +127,9 @@ int main()
 
        cout << "\nMax of 2D-Array is: " << find_max(a, row, column);
        cout << "\nMin of 2D-Array is: " << find_min(a, row, column);
-
+       cout << "\nSum of 2D-Array is: " << sum_2D_array(a, row, column);
+       cout << "\nQuantity of even number of 2D-Array is: "<< quantity_of_even_number_2D_array(a, row, column);
+       cout << "\nQuantity of odd number of 2D-Array is: "<< quantity_of_odd_number_2D_array(a, row, column);
 
        return 0;
 }
