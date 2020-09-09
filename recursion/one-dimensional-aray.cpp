@@ -10,7 +10,7 @@ using namespace std;
 4/ Min and Max in one dimensional array
 5/ Quantity of even number in one dimensional array
 6/ Arrange incresing and decresing one dimensional array
- Note: Only using recursion
+Note: Only using recursion
 */
 
 void input_one_dimensional_array(int *a, int n, int i = 0)
@@ -142,6 +142,9 @@ void arrange_decreasing_1d_array(int *a, int n, int i = 0)
        }
        arrange_decreasing_1d_array(a, n, i + 1);
 }
+
+
+
 int main()
 {
        int n = 7;

@@ -129,9 +129,21 @@ void arrange_increasing_2D_array(int **a, int row, int column, int i = 0)
        return arrange_increasing_2D_array(a, row, column, i + 1);
 }
 
-// void arrange_decreasing_2D_array(int **a, int row, int column, int i = 0)
-// {
-// }
+void arrange_decreasing_2D_array(int **a, int row, int column, int i = 0)
+{
+       if (i == row * column)
+       {
+              return;
+       }
+       for (int k = i + 1; k < row * column; k++)
+       {
+              if (a[i / column][i % column] < a[k / column][k % column])
+              {
+                     swap(a[i / column][i % column], a[k / column][k % column]);
+              }
+       }
+       return arrange_decreasing_2D_array(a, row, column, i + 1);
+}
 
 int main()
 {
@@ -157,6 +169,9 @@ int main()
        cout << "\nSum of odd number of 2D-Array is: " << sum_of_odd_numer_2D_array(a, row, column);
        cout << "\nIncreasing 2D-Array: ";
        arrange_increasing_2D_array(a, row, column);
+       output_2D_array(a, row, column);
+       cout << "\nDecreasing 2D-Array: ";
+       arrange_decreasing_2D_array(a, row, column);
        output_2D_array(a, row, column);
        return 0;
 }
