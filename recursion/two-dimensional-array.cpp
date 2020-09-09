@@ -92,13 +92,19 @@ int sum_of_even_numer_2D_array(int **a, int row, int column, int i = 0, int sum 
        {
               return sum;
        }
-       
-      return sum_of_even_numer_2D_array(a, row, column, i + 1, a[i / column][i % column] % 2 == 0 ? (sum + a[i / column][i % column]) : sum);
+
+       return sum_of_even_numer_2D_array(a, row, column, i + 1, a[i / column][i % column] % 2 == 0 ? (sum + a[i / column][i % column]) : sum);
 }
 
-// int sum_of_odd_numer_2D_array(int **a, int row, int column, int i = 0, int cout = 0)
-// {
-// }
+int sum_of_odd_numer_2D_array(int **a, int row, int column, int i = 0, int sum = 0)
+{
+       if (i == column * row)
+       {
+              return sum;
+       }
+
+       return sum_of_odd_numer_2D_array(a, row, column, i + 1, a[i / column][i % column] % 2 != 0 ? (sum + a[i / column][i % column]) : sum);
+}
 
 // void swap(int &a, int &b)
 // {
@@ -133,8 +139,10 @@ int main()
        cout << "\nMax of 2D-Array is: " << find_max(a, row, column);
        cout << "\nMin of 2D-Array is: " << find_min(a, row, column);
        cout << "\nSum of 2D-Array is: " << sum_2D_array(a, row, column);
-       cout << "\nQuantity of even number of 2D-Array is: "<< quantity_of_even_number_2D_array(a, row, column);
-       cout << "\nQuantity of odd number of 2D-Array is: "<< quantity_of_odd_number_2D_array(a, row, column);
-       cout << "\nSum of even number of 2D-Array is: "<< sum_of_even_numer_2D_array(a, row, column);
+       cout << "\nQuantity of even number of 2D-Array is: " << quantity_of_even_number_2D_array(a, row, column);
+       cout << "\nQuantity of odd number of 2D-Array is: " << quantity_of_odd_number_2D_array(a, row, column);
+       cout << "\nSum of even number of 2D-Array is: " << sum_of_even_numer_2D_array(a, row, column);
+       cout << "\nSum of odd number of 2D-Array is: " << sum_of_odd_numer_2D_array(a, row, column);
+
        return 0;
 }
