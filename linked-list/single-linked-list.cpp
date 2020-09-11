@@ -49,6 +49,19 @@ void addHead(LIST &list, NODE *p)
        }
 }
 
+void addTail(LIST &list, NODE *p)
+{
+       if (list.pHead == NULL)
+       {
+              list.pHead = list.pTail = p;
+       }
+       else
+       {
+              list.pTail->pNext = p;
+              list.pTail = p;
+       }
+}
+
 int main()
 {
        return 0;
