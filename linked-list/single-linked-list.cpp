@@ -20,6 +20,22 @@ void init(LIST &list){
        list.pHead = list.pTail = NULL;
 }
 
+NODE* createNote(int value){
+       NODE *p = new NODE;
+
+       if (p == NULL)
+       {
+              cout << "You can not create a NODE\n";
+              return NULL;
+       }
+
+       p ->data = value;
+       p ->pNext = NULL;
+       return p;
+}
+
+
+
 
 
 
