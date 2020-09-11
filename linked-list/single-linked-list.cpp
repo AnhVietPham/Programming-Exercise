@@ -62,7 +62,38 @@ void addTail(LIST &list, NODE *p)
        }
 }
 
+void input(LIST &list)
+{
+       init(list);
+
+       int n;
+       cout << "Input quantity of element of Single Linked List: ";
+       cin >> n;
+
+       for (int i = 0; i < n; i++)
+       {
+              int value;
+              cout << "\nInput value: ";
+              cin >> value;
+
+              NODE *p;
+              p = createNote(value);
+              addTail(list, p);
+       }
+}
+
+void output(LIST list)
+{
+       for (NODE *p = list.pHead; p != NULL; p = p->pNext)
+       {
+              cout << "   " << p->data;
+       }
+}
+
 int main()
 {
+       LIST list;
+       input(list);
+       output(list);
        return 0;
 }
