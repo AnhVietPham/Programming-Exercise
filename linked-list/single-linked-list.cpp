@@ -16,7 +16,9 @@ struct List
 
 typedef struct List LIST;
 
-
+void init(LIST &list){
+       list.pHead = list.pTail = NULL;
+}
 
 
 
