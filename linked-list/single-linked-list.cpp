@@ -90,12 +90,26 @@ void output(LIST list)
        }
 }
 
-int sum(LIST list){
+int sum(LIST list)
+{
        int sum = 0;
-       for (NODE *p = list.pHead; p != NULL; p = p->pNext){
+       for (NODE *p = list.pHead; p != NULL; p = p->pNext)
+       {
               sum += p->data;
        }
        return sum;
+}
+
+void listEvenNumber(LIST list)
+{
+       cout << "\nList Even Number: ";
+       for (NODE *p = list.pHead; p != NULL; p = p->pNext)
+       {
+              if (p->data % 2 == 0)
+              {
+                     cout << "   " << p->data;
+              }
+       }
 }
 
 int main()
@@ -103,6 +117,7 @@ int main()
        LIST list;
        input(list);
        output(list);
-       cout<<"\n Sum: "<< sum(list);
+       cout << "\n Sum: " << sum(list);
+       listEvenNumber(list);
        return 0;
 }
