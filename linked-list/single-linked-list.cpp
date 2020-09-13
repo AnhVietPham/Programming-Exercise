@@ -90,10 +90,19 @@ void output(LIST list)
        }
 }
 
+int sum(LIST list){
+       int sum = 0;
+       for (NODE *p = list.pHead; p != NULL; p = p->pNext){
+              sum += p->data;
+       }
+       return sum;
+}
+
 int main()
 {
        LIST list;
        input(list);
        output(list);
+       cout<<"\n Sum: "<< sum(list);
        return 0;
 }
