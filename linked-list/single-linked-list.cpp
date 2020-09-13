@@ -112,6 +112,20 @@ void listEvenNumber(LIST list)
        }
 }
 
+void swapSolutionOne(int &x, int &y)
+{
+       int temp = x;
+       x = y;
+       y = x;
+}
+
+void swapSolutionTwo(int &x, int &y)
+{
+       x = x + y;
+       y = x - y;
+       x = x - y;
+}
+
 void listOddNumber(LIST list)
 {
        cout << "\nList Odd Number: ";
@@ -124,6 +138,21 @@ void listOddNumber(LIST list)
        }
 }
 
+void arrangeIncreasing(LIST &list)
+{
+       for (NODE *p = list.pHead; p != NULL; p = p->pNext)
+       {
+              for (NODE *q = p->pNext; q != NULL; q = q->pNext)
+              {
+                     if (p->data > q->data)
+                     {
+                            swapSolutionTwo(p->data,q->data);
+                     }
+                     
+              }
+       }
+}
+
 int main()
 {
        LIST list;
@@ -132,5 +161,8 @@ int main()
        cout << "\n Sum: " << sum(list);
        listEvenNumber(list);
        listOddNumber(list);
+       cout<<"\nArrange Increasing: ";
+       arrangeIncreasing(list);
+       output(list);
        return 0;
 }
