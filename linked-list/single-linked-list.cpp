@@ -112,6 +112,18 @@ void listEvenNumber(LIST list)
        }
 }
 
+void listOddNumber(LIST list)
+{
+       cout << "\nList Odd Number: ";
+       for (NODE *p = list.pHead; p != NULL; p = p->pNext)
+       {
+              if (p->data % 2 != 0)
+              {
+                     cout << "   " << p->data;
+              }
+       }
+}
+
 int main()
 {
        LIST list;
@@ -119,5 +131,6 @@ int main()
        output(list);
        cout << "\n Sum: " << sum(list);
        listEvenNumber(list);
+       listOddNumber(list);
        return 0;
 }
