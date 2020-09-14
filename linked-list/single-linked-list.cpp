@@ -176,6 +176,19 @@ void insertAfter(LIST &list, NODE *x, NODE *k)
               {
                      k->pNext = p->pNext;
                      p->pNext = k;
+                     return;
+              }
+       }
+}
+
+void insertAfterAllEvenNumber(LIST &list,int data){
+       for (NODE *p = list.pHead; p != NULL; p = p->pNext)
+       {
+              if (p->data % 2 == 0)
+              {
+                     NODE *x = createNote(data);
+                     x->pNext = p->pNext;
+                     p->pNext = x;
               }
        }
 }
@@ -194,10 +207,13 @@ int main()
        // cout << "\nArrange Decreasing: ";
        // arrangDecreasing(list);
        // output(list);
-       cout << "\nInsert after node: ";
-       NODE *p = createNote(2);
-       NODE *k = createNote(69);
-       insertAfter(list, p, k);
+       // cout << "\nInsert after node: ";
+       // NODE *p = createNote(2);
+       // NODE *k = createNote(69);
+       // insertAfter(list, p, k);
+       // output(list);
+       cout <<"\nInsert after all even number: ";
+       insertAfterAllEvenNumber(list, 69);
        output(list);
        return 0;
 }
