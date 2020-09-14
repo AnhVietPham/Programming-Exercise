@@ -166,6 +166,20 @@ void arrangDecreasing(LIST &list)
        }
 }
 
+// 1 2 3 4 5 6 7
+
+void insertAfter(LIST &list, NODE *x, NODE *k)
+{
+       for (NODE *p = list.pHead; p != NULL; p = p->pNext)
+       {
+              if (p->data == x->data)
+              {
+                     k->pNext = p->pNext;
+                     p->pNext = k;
+              }
+       }
+}
+
 int main()
 {
        LIST list;
@@ -174,11 +188,16 @@ int main()
        cout << "\n Sum: " << sum(list);
        listEvenNumber(list);
        listOddNumber(list);
-       cout << "\nArrange Increasing: ";
-       arrangeIncreasing(list);
-       output(list);
-       cout << "\nArrange Decreasing: ";
-       arrangDecreasing(list);
+       // cout << "\nArrange Increasing: ";
+       // arrangeIncreasing(list);
+       // output(list);
+       // cout << "\nArrange Decreasing: ";
+       // arrangDecreasing(list);
+       // output(list);
+       cout << "\nInsert after node: ";
+       NODE *p = createNote(2);
+       NODE *k = createNote(69);
+       insertAfter(list, p, k);
        output(list);
        return 0;
 }
