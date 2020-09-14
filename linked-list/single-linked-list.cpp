@@ -181,7 +181,8 @@ void insertAfter(LIST &list, NODE *x, NODE *k)
        }
 }
 
-void insertAfterAllEvenNumber(LIST &list,int data){
+void insertAfterAllEvenNumber(LIST &list, int data)
+{
        for (NODE *p = list.pHead; p != NULL; p = p->pNext)
        {
               if (p->data % 2 == 0)
@@ -190,6 +191,26 @@ void insertAfterAllEvenNumber(LIST &list,int data){
                      x->pNext = p->pNext;
                      p->pNext = x;
               }
+       }
+}
+// 1 2 3 4 5 6
+void insertBefore(LIST &list, NODE *x, NODE *k)
+{
+       NODE *temp;
+
+       if (list.pHead->data == x->data)
+       {
+              addHead(list, k);
+       }
+
+       for (NODE *p = list.pHead; p != NULL; p = p->pNext)
+       {
+              if (x->data == p->data)
+              {
+                     temp->pNext = k;
+                     k->pNext = p;
+              }
+              temp = p;
        }
 }
 
@@ -212,8 +233,13 @@ int main()
        // NODE *k = createNote(69);
        // insertAfter(list, p, k);
        // output(list);
-       cout <<"\nInsert after all even number: ";
-       insertAfterAllEvenNumber(list, 69);
+       // cout << "\nInsert after all even number: ";
+       // insertAfterAllEvenNumber(list, 69);
+       // output(list);
+       cout << "\nInsert before node: ";
+       NODE *p = createNote(3);
+       NODE *k = createNote(69);
+       insertBefore(list, p, k);
        output(list);
        return 0;
 }
