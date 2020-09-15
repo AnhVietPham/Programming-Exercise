@@ -214,7 +214,8 @@ void insertBefore(LIST &list, NODE *x, NODE *k)
        }
 }
 
-void insertBeforeAllEvenNumber(LIST &list, int data){
+void insertBeforeAllEvenNumber(LIST &list, int data)
+{
        NODE *temp;
 
        if (list.pHead->data % 2 == 0)
@@ -232,6 +233,32 @@ void insertBeforeAllEvenNumber(LIST &list, int data){
                      k->pNext = p;
               }
               temp = p;
+       }
+}
+
+void removeOneNode(LIST &list, int data)
+{
+       NODE *temp;
+       for (NODE *p = list.pHead; p != NULL; p = p->pNext)
+       {
+              if (p->data == data)
+              {
+                     temp->pNext = p->pNext;
+                     delete p;
+                     return;
+              }
+              temp = p;
+       }
+}
+
+void destroy(LIST &list)
+{
+       NODE *p;
+       while (list.pHead != NULL)
+       {
+              p = list.pHead;
+              list.pHead = list.pHead->pNext;
+              delete p;
        }
 }
 
@@ -262,8 +289,11 @@ int main()
        // NODE *k = createNote(69);
        // insertBefore(list, p, k);
        // output(list);
-       cout << "\nInsert before all even number: ";
-       insertBeforeAllEvenNumber(list, 69);
+       // cout << "\nInsert before all even number: ";
+       // insertBeforeAllEvenNumber(list, 69);
+       cout << "\nRemove one NODE: ";
+       removeOneNode(list, 2);
        output(list);
+       destroy(list);
        return 0;
 }
