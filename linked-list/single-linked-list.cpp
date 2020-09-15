@@ -251,6 +251,21 @@ void removeOneNode(LIST &list, int data)
        }
 }
 
+void removeManyNode(LIST &list, int data)
+{
+       NODE *temp;
+       for (NODE *p = list.pHead; p != NULL; p = p->pNext)
+       {
+              if (p->data == data)
+              {
+                     temp->pNext = p->pNext;
+                     delete p;
+                     p = temp;
+              }
+              temp = p;
+       }
+}
+
 void destroy(LIST &list)
 {
        NODE *p;
@@ -291,8 +306,10 @@ int main()
        // output(list);
        // cout << "\nInsert before all even number: ";
        // insertBeforeAllEvenNumber(list, 69);
-       cout << "\nRemove one NODE: ";
-       removeOneNode(list, 2);
+       // cout << "\nRemove one NODE: ";
+       // removeOneNode(list, 2);
+       cout << "\nRemove many NODE: ";
+       removeManyNode(list, 2);
        output(list);
        destroy(list);
        return 0;
