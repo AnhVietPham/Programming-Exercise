@@ -74,6 +74,15 @@ void LNR(NODE *root)
        }
 }
 
+void RNL(NODE *root){
+       if (root != NULL)
+       {
+              RNL(root->right);
+              cout << root->data << "   ";
+              RNL(root->left);
+       }
+}
+
 int main()
 {
        NODE *ROOT;
@@ -86,5 +95,8 @@ int main()
        cout<<"\n";
        cout << "LNR: "<< "\n";
        LNR(ROOT);
+       cout<<"\n";
+       cout << "RNL: "<< "\n";
+       RNL(ROOT);
        return 0;
 }
