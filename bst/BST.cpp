@@ -91,11 +91,37 @@ void createBST(NODE *&root, int a[], int n)
        }
 }
 
-void createBSTRidOfRecursion(NODE *&root, int a[], int n){
+void createBSTRidOfRecursion(NODE *&root, int a[], int n)
+{
        init(root);
        for (int i = 0; i < n; i++)
        {
               ridOfRecursionAddNodeIntoThree(root, a[i]);
+       }
+}
+
+bool findNodeRecursion(NODE *root, int x)
+{
+       if (root == NULL)
+       {
+              return false;
+       }
+
+       if (root->data == x)
+       {
+              return true;
+       }
+
+       if (root != NULL)
+       {
+              if (root->data > x)
+              {
+                     return findNodeRecursion(root->left, x);
+              }
+              else if (root->data < x)
+              {
+                     return findNodeRecursion(root->right, x);
+              }
        }
 }
 
@@ -160,6 +186,9 @@ int main()
        cout << "LNR Rid of Recursion: "
             << "\n";
        LNR(ROOT1);
+
+       cout << "\n";
+       cout << "Find Node in BST: "<< findNodeRecursion(ROOT, 350);
        // cout << "\n";
        // cout << "RNL: "
        //      << "\n";
