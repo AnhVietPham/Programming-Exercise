@@ -125,6 +125,31 @@ bool findNodeRecursion(NODE *root, int x)
        }
 }
 
+bool findNodeRidOfRecursion(NODE *root, int x)
+{
+       if (root == NULL)
+       {
+              return false;
+       }
+
+       while (root != NULL)
+       {
+              if (root->data > x)
+              {
+                     root = root->left;
+              }
+              else if (root->data < x)
+              {
+                     root = root->right;
+              }
+              else
+              {
+                     return true;
+              }
+       }
+       return false;
+}
+
 void NLR(NODE *root)
 {
        if (root != NULL)
@@ -188,7 +213,10 @@ int main()
        LNR(ROOT1);
 
        cout << "\n";
-       cout << "Find Node in BST: "<< findNodeRecursion(ROOT, 350);
+       cout << "Find Node in BST: " << findNodeRecursion(ROOT, 35);
+
+       cout << "\n";
+       cout << "Find Node Rid of Recursion in BST: " << findNodeRidOfRecursion(ROOT, 35);
        // cout << "\n";
        // cout << "RNL: "
        //      << "\n";
