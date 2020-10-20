@@ -41,9 +41,27 @@ public:
               pointC = pointC_init;
        };
 
-       bool isTriangle(){
+       void isTheSamePeak(Triangle *triangle)
+       {
+              if (this->pointA->getX() == triangle->pointA->getX() && this->pointA->getY() == triangle->pointA->getY())
+              {
+                     cout << "The same Peak A" << endl;
+              }
 
+              if (this->pointB->getX() == triangle->pointB->getX() && this->pointB->getY() == triangle->pointB->getY())
+              {
+                     cout << "The same Peak B" << endl;
+              }
+
+              if (this->pointC->getX() == triangle->pointC->getX() && this->pointC->getY() == triangle->pointC->getY())
+              {
+                     cout << "The same Peak C" << endl;
+              }
        };
+
+       bool isTheSameEdge(Triangle *triangle)
+       {
+       }
 
        float edgeAB()
        {
@@ -67,10 +85,19 @@ int main()
        Point *pointB = new Point(4, 6);
        Point *pointC = new Point(6, 7);
 
-       Triangle *triangle = new Triangle(pointA, pointB, pointC);
-       cout << "Edge AB: " << triangle->edgeAB()<< endl;
-       cout << "Edge BC: " << triangle->edgeBC() << endl;
-       cout << "Edge AC: " << triangle->edgeAC() << endl;
+       Triangle *triangleOne = new Triangle(pointA, pointB, pointC);
+       cout << "Edge AB: " << triangleOne->edgeAB() << endl;
+       cout << "Edge BC: " << triangleOne->edgeBC() << endl;
+       cout << "Edge AC: " << triangleOne->edgeAC() << endl;
+
+       Point *pointD = new Point(3, 5);
+       Point *pointE = new Point(4, 6);
+       Point *pointF = new Point(6, 7);
+
+       Triangle *triangleTwo = new Triangle(pointD, pointE, pointF);
+
+       triangleOne->isTheSamePeak(triangleTwo);
+
 
        return 0;
 }
