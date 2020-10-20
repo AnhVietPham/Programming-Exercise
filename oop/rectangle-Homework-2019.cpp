@@ -114,6 +114,8 @@ int main()
        triangleOne->isTheSamePeak(triangleTwo);
        triangleOne->isTheSameEdge(triangleTwo);
 
+       delete pointA, pointB, pointC, pointD, pointE, pointF;
+       delete triangleTwo, triangleOne;
 
        return 0;
 }
