@@ -61,6 +61,21 @@ public:
 
        bool isTheSameEdge(Triangle *triangle)
        {
+              if (this->pointA->getX() == triangle->pointA->getX() && this->pointA->getY() == triangle->pointA->getY() && this->pointB->getX() == triangle->pointB->getX() && this->pointB->getY() == triangle->pointB->getY())
+              {
+                     cout << "The same EDGE AB" << endl;
+              }
+
+              if (this->pointA->getX() == triangle->pointA->getX() && this->pointA->getY() == triangle->pointA->getY() && this->pointC->getX() == triangle->pointC->getX() && this->pointC->getY() == triangle->pointC->getY())
+              {
+                     cout << "The same EDGE AC" << endl;
+              }
+
+              if (this->pointB->getX() == triangle->pointB->getX() && this->pointB->getY() == triangle->pointB->getY() && this->pointC->getX() == triangle->pointC->getX() && this->pointC->getY() == triangle->pointC->getY())
+              {
+                     cout << "The same EDGE BC" << endl;
+              }
+              
        }
 
        float edgeAB()
@@ -97,6 +112,7 @@ int main()
        Triangle *triangleTwo = new Triangle(pointD, pointE, pointF);
 
        triangleOne->isTheSamePeak(triangleTwo);
+       triangleOne->isTheSameEdge(triangleTwo);
 
 
        return 0;
