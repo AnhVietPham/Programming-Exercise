@@ -149,6 +149,33 @@ bool findNodeRidOfRecursion(NODE *root, int x)
        }
        return false;
 }
+void findNodeReplaceMostLeftOfRightSub(NODE *&root, NODE *&p)
+{
+       if (root->left != NULL)
+       {
+              findNodeReplaceMostLeftOfRightSub(root->left, p);
+       }
+       else
+       {
+              p->data = root->data;
+              p = root;
+              root = root->right;
+       }
+}
+
+void findNodeReplaceMostRightOfLeftSub(NODE *&root, NODE *&p)
+{
+       if (root->right != NULL)
+       {
+              findNodeReplaceMostRightOfLeftSub(root->right, p);
+       }else
+       {
+              p->data = root->data;
+              p = root;
+              root = root -> left;
+       }
+       
+}
 
 void removeNode(NODE *&root, int x)
 {
@@ -176,6 +203,11 @@ void removeNode(NODE *&root, int x)
               {
                      root = p->left;
               }
+              else
+              {
+                     findNodeReplaceMostLeftOfRightSub(root->right, p);
+              }
+
               delete p;
               p = NULL;
        }
@@ -237,26 +269,16 @@ int main()
 {
        NODE *ROOT;
        NODE *ROOT1;
-       int a[] = {40, 5, 35, 45, 15, 56, 48, 13, 16, 49, 47};
+       // int a[] = {40, 5, 35, 45, 15, 56, 48, 13, 16, 49, 47};
+       int a[] = {50, 30, 100, 20, 40, 35, 45, 37};
        int n = sizeof(a) / sizeof(a[0]);
 
        createBST(ROOT, a, n);
-       createBSTRidOfRecursion(ROOT1, a, n);
+       // createBSTRidOfRecursion(ROOT1, a, n);
        // // cout << "NLR: "
        // //      << "\n";
        // // NLR(ROOT);
        // // GiaiPhongCay_DeQuy(ROOT);
-       cout << "\n";
-       cout << "LNR Recursion: "
-            << "\n";
-       LNR(ROOT);
-
-       cout << "\n";
-       cout << "LNR Rid of Recursion: "
-            << "\n";
-       LNR(ROOT1);
-
-       removeNode(ROOT, 45);
        cout << "\n";
        cout << "LNR Recursion: "
             << "\n";
@@ -267,18 +289,29 @@ int main()
        //      << "\n";
        // LNR(ROOT1);
 
-       // cout << "\n";
-       // cout << "Find Node in BST: " << findNodeRecursion(ROOT, 35);
+       removeNode(ROOT, 30);
+       cout << "\n";
+       cout << "LNR Recursion: "
+            << "\n";
+       LNR(ROOT);
 
-       // cout << "\n";
-       // cout << "Find Node Rid of Recursion in BST: " << findNodeRidOfRecursion(ROOT, 35);
-       // cout << "\n";
-       // cout << "RNL: "
-       //      << "\n";
-       // RNL(ROOT);
-       // cout << "\n";
-       // cout << "LRN: "
-       //      << "\n";
-       // LRN(ROOT);
+       // // cout << "\n";
+       // // cout << "LNR Rid of Recursion: "
+       // //      << "\n";
+       // // LNR(ROOT1);
+
+       // // cout << "\n";
+       // // cout << "Find Node in BST: " << findNodeRecursion(ROOT, 35);
+
+       // // cout << "\n";
+       // // cout << "Find Node Rid of Recursion in BST: " << findNodeRidOfRecursion(ROOT, 35);
+       // // cout << "\n";
+       // // cout << "RNL: "
+       // //      << "\n";
+       // // RNL(ROOT);
+       // // cout << "\n";
+       // // cout << "LRN: "
+       // //      << "\n";
+       // // LRN(ROOT);
        return 0;
 }
