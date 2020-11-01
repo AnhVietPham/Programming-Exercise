@@ -78,14 +78,9 @@ void merge_sort(int *a, int left, int right)
        }
 }
 
-void convertToYoung(int *a, int k, int m, int n)
+void convertToYoung(int *a, int k, int **Y, int m, int n)
 {
        merge_sort(a, 0, k - 1);
-       int **Y = new int *[m];
-       for (int i = 0; i < m; i++)
-       {
-              Y[i] = new int[n];
-       }
 
        for (int i = 0; i < m * n; i++)
        {
@@ -101,22 +96,53 @@ void convertToYoung(int *a, int k, int m, int n)
        output_two_array(Y, m, n);
 }
 
+bool isYoungTable(int **Y, int m, int n)
+{
+       int i = 0;
+       while (i < m * n - 1)
+       {
+              if ((i % m == n - 1))
+              {
+                     if (Y[i / m][i % m] > Y[(i + 1) / m][(i + 1) % m] && Y[(i + 1) / m][(i + 1) % m] != 0)
+                     {
+                            return false;
+                     }
+              }
+              else
+              {
+                     if (Y[i / m][i % m] > Y[i / m][(i + 1) % m] && Y[i / m][(i + 1) % m] != 0)
+                     {
+                            return false;
+                     }
+              }
+              i++;
+       }
+       return true;
+}
+
 int main()
 {
        int a[] = {4, 2, 4, 6, 19, 5, 7, 10, 20, 21};
        int n = sizeof(a) / sizeof(a[0]);
 
+       int row = 4;
+       int column = 4;
+
+       int **Y = new int *[row];
+       for (int i = 0; i < row; i++)
+       {
+              Y[i] = new int[column];
+       }
+
        output_array(a, n);
 
        cout << endl;
 
-       merge_sort(a, 0, n - 1);
-
-       output_array(a, n);
+       convertToYoung(a, n, Y, row, column);
 
        cout << endl;
 
-       convertToYoung(a, n, 4, 4);
+       cout << "Is Young Matrix: " << isYoungTable(Y, row, column);
 
        return 0;
 }
