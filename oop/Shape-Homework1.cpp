@@ -78,8 +78,12 @@ int main()
        for (int i = 0; i < 3; i++)
               s[i]->draw();
 
+       cout << dr << "\n";
+       cout << dc << "\n";
        delete dr;
        delete dc;
+       cout << dr << "\n";
+       cout << dc << "\n";
        for (int i = 0; i < 3; i++)
               delete s[i];
 }
