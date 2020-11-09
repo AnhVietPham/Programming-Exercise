@@ -253,6 +253,20 @@ void LRN(NODE *root)
        }
 }
 
+int findMinInBSTRecursion(NODE *Root){
+       if (Root == NULL)
+       {
+              return 0;
+       }
+
+       if (Root->left != NULL)
+       {
+             return findMinInBSTRecursion(Root->left);
+       }
+       
+       return Root->data;
+}
+
 void GiaiPhongCay_DeQuy(NODE *&Root)
 {
        if (Root != NULL)
@@ -269,8 +283,8 @@ int main()
 {
        NODE *ROOT;
        NODE *ROOT1;
-       // int a[] = {40, 5, 35, 45, 15, 56, 48, 13, 16, 49, 47};
-       int a[] = {50, 30, 100, 20, 40, 35, 45, 37};
+       int a[] = {40, 5, 35, 45, 15, 56, 48, 13, 16, 49, 47};
+       // int a[] = {50, 30, 100, 20, 40, 35, 45, 37};
        int n = sizeof(a) / sizeof(a[0]);
 
        createBST(ROOT, a, n);
@@ -284,16 +298,19 @@ int main()
             << "\n";
        LNR(ROOT);
 
+       cout << "\n";
+       cout << "Min in BST: "<< findMinInBSTRecursion(ROOT)<<endl;
+
        // cout << "\n";
        // cout << "LNR Rid of Recursion: "
        //      << "\n";
        // LNR(ROOT1);
 
-       removeNode(ROOT, 30);
-       cout << "\n";
-       cout << "LNR Recursion: "
-            << "\n";
-       LNR(ROOT);
+       // removeNode(ROOT, 30);
+       // cout << "\n";
+       // cout << "LNR Recursion: "
+       //      << "\n";
+       // LNR(ROOT);
 
        // // cout << "\n";
        // // cout << "LNR Rid of Recursion: "
