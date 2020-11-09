@@ -283,6 +283,20 @@ int findMinInBSTRidOfRecursion(NODE *Root)
        return Root->data;
 }
 
+int findMaxInBSTRecursion(NODE *Root){
+       if (Root == NULL)
+       {
+              return -1;
+       }
+
+       if (Root->right != NULL)
+       {
+              return findMaxInBSTRecursion(Root->right);
+       }
+       
+       return Root->data;
+}
+
 void GiaiPhongCay_DeQuy(NODE *&Root)
 {
        if (Root != NULL)
@@ -317,6 +331,8 @@ int main()
        cout << "\n";
        cout << "Min in BST Recursion: " << findMinInBSTRecursion(ROOT) << endl;
        cout << "Min in BST Rid of Recursion: " << findMinInBSTRidOfRecursion(ROOT) << endl;
+
+       cout << "Max in BST Rid of Recursion: " << findMaxInBSTRecursion(ROOT) << endl;
        // cout << "\n";
        // cout << "LNR Rid of Recursion: "
        //      << "\n";
