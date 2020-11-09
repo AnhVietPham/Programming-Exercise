@@ -168,13 +168,13 @@ void findNodeReplaceMostRightOfLeftSub(NODE *&root, NODE *&p)
        if (root->right != NULL)
        {
               findNodeReplaceMostRightOfLeftSub(root->right, p);
-       }else
+       }
+       else
        {
               p->data = root->data;
               p = root;
-              root = root -> left;
+              root = root->left;
        }
-       
 }
 
 void removeNode(NODE *&root, int x)
@@ -253,7 +253,8 @@ void LRN(NODE *root)
        }
 }
 
-int findMinInBSTRecursion(NODE *Root){
+int findMinInBSTRecursion(NODE *Root)
+{
        if (Root == NULL)
        {
               return 0;
@@ -261,9 +262,24 @@ int findMinInBSTRecursion(NODE *Root){
 
        if (Root->left != NULL)
        {
-             return findMinInBSTRecursion(Root->left);
+              return findMinInBSTRecursion(Root->left);
        }
-       
+
+       return Root->data;
+}
+
+int findMinInBSTRidOfRecursion(NODE *Root)
+{
+       if (Root == NULL)
+       {
+              return 0;
+       }
+
+       while (Root->left != NULL)
+       {
+              Root = Root->left;
+       }
+
        return Root->data;
 }
 
@@ -299,8 +315,8 @@ int main()
        LNR(ROOT);
 
        cout << "\n";
-       cout << "Min in BST: "<< findMinInBSTRecursion(ROOT)<<endl;
-
+       cout << "Min in BST Recursion: " << findMinInBSTRecursion(ROOT) << endl;
+       cout << "Min in BST Rid of Recursion: " << findMinInBSTRidOfRecursion(ROOT) << endl;
        // cout << "\n";
        // cout << "LNR Rid of Recursion: "
        //      << "\n";
