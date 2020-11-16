@@ -314,22 +314,62 @@ int findMaxInBSTRidOfRecursion(NODE *Root)
        return Root->data;
 }
 
-void convertFromBSTToArray(NODE *Root, vector<int> &arr)
+void convertFromBSTToArray(NODE *Root, vector<int> &arr, int x, int y, bool &isAddX, bool &isAddY)
 {
+
        if (Root != NULL)
        {
-              convertFromBSTToArray(Root->left, arr);
+              convertFromBSTToArray(Root->left, arr, x, y, isAddX, isAddY);
+
+              if (Root->data > x && isAddX == false)
+              {
+                     arr.push_back(x);
+                     isAddX = true;
+              }
+
+              if (Root->data > y && isAddY == false)
+              {
+                     arr.push_back(y);
+                     isAddY = true;
+              }
+
               arr.push_back(Root->data);
-              convertFromBSTToArray(Root->right, arr);
+
+              convertFromBSTToArray(Root->right, arr, x, y, isAddX, isAddY);
        }
 }
 
 void outPutVector(vector<int> vector)
 {
-       cout << "Output Vector of begin and end: "; 
+       cout << "Output Vector of begin and end: ";
        for (auto i = vector.begin(); i != vector.end(); i++)
        {
               cout << *i << "   ";
+       }
+}
+
+int binarySearch(vector<int> arr, int left, int right, int x)
+{
+       if (left > right)
+       {
+              return -1;
+       }
+
+       int mid = (left + right) / 2;
+
+       if (x < arr[mid])
+       {
+              return binarySearch(arr, left, mid - 1, x);
+       }
+
+       if (x > arr[mid])
+       {
+              return binarySearch(arr, mid + 1, right, x);
+       }
+
+       if (x == arr[mid])
+       {
+              return mid;
        }
 }
 
@@ -353,10 +393,27 @@ int main()
        // int a[] = {50, 30, 100, 20, 40, 35, 45, 37};
        int n = sizeof(a) / sizeof(a[0]);
        vector<int> arr;
-
+       int x = 59;
+       int y = 89;
+       bool isAddX = false;
+       bool isAddY = false;
        createBST(ROOT, a, n);
-       convertFromBSTToArray(ROOT,arr);
+       convertFromBSTToArray(ROOT, arr, x, y, isAddX, isAddY);
+       if (isAddX == false && isAddY == false)
+       {
+              arr.push_back(x);
+              arr.push_back(y);
+              isAddX = true;
+              isAddY = true;
+       }
+
        outPutVector(arr);
+       cout << endl;
+       int indexOfX = binarySearch(arr, 0, arr.size() - 1, x);
+       int indexOfY = binarySearch(arr, 0, arr.size() - 1, y);
+       cout << "Index of X in arr: " << indexOfX << endl;
+       cout << "Index of Y in arr: " << indexOfY << endl;
+       cout << "Quantity of number in [X,Y] " << indexOfY - indexOfX + 1 - 2;
        // createBSTRidOfRecursion(ROOT1, a, n);
        // // cout << "NLR: "
        // //      << "\n";
