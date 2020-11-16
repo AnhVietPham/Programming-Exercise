@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 struct Node
@@ -283,7 +284,8 @@ int findMinInBSTRidOfRecursion(NODE *Root)
        return Root->data;
 }
 
-int findMaxInBSTRecursion(NODE *Root){
+int findMaxInBSTRecursion(NODE *Root)
+{
        if (Root == NULL)
        {
               return -1;
@@ -293,11 +295,12 @@ int findMaxInBSTRecursion(NODE *Root){
        {
               return findMaxInBSTRecursion(Root->right);
        }
-       
+
        return Root->data;
 }
 
-int findMaxInBSTRidOfRecursion(NODE *Root){
+int findMaxInBSTRidOfRecursion(NODE *Root)
+{
        if (Root == NULL)
        {
               return -1;
@@ -307,9 +310,27 @@ int findMaxInBSTRidOfRecursion(NODE *Root){
        {
               Root = Root->right;
        }
-       
+
        return Root->data;
-       
+}
+
+void convertFromBSTToArray(NODE *Root, vector<int> &arr)
+{
+       if (Root != NULL)
+       {
+              convertFromBSTToArray(Root->left, arr);
+              arr.push_back(Root->data);
+              convertFromBSTToArray(Root->right, arr);
+       }
+}
+
+void outPutVector(vector<int> vector)
+{
+       cout << "Output Vector of begin and end: "; 
+       for (auto i = vector.begin(); i != vector.end(); i++)
+       {
+              cout << *i << "   ";
+       }
 }
 
 void GiaiPhongCay_DeQuy(NODE *&Root)
@@ -331,24 +352,27 @@ int main()
        int a[] = {40, 5, 35, 45, 15, 56, 48, 13, 16, 49, 47};
        // int a[] = {50, 30, 100, 20, 40, 35, 45, 37};
        int n = sizeof(a) / sizeof(a[0]);
+       vector<int> arr;
 
        createBST(ROOT, a, n);
+       convertFromBSTToArray(ROOT,arr);
+       outPutVector(arr);
        // createBSTRidOfRecursion(ROOT1, a, n);
        // // cout << "NLR: "
        // //      << "\n";
        // // NLR(ROOT);
        // // GiaiPhongCay_DeQuy(ROOT);
-       cout << "\n";
-       cout << "LNR Recursion: "
-            << "\n";
-       LNR(ROOT);
+       // cout << "\n";
+       // cout << "LNR Recursion: "
+       //      << "\n";
+       // LNR(ROOT);
 
-       cout << "\n";
-       cout << "Min in BST Recursion: " << findMinInBSTRecursion(ROOT) << endl;
-       cout << "Min in BST Rid of Recursion: " << findMinInBSTRidOfRecursion(ROOT) << endl;
+       // cout << "\n";
+       // cout << "Min in BST Recursion: " << findMinInBSTRecursion(ROOT) << endl;
+       // cout << "Min in BST Rid of Recursion: " << findMinInBSTRidOfRecursion(ROOT) << endl;
 
-       cout << "Max in BST Recursion: " << findMaxInBSTRecursion(ROOT) << endl;
-       cout << "Max in BST Rid of Recursion: " << findMaxInBSTRidOfRecursion(ROOT) << endl;
+       // cout << "Max in BST Recursion: " << findMaxInBSTRecursion(ROOT) << endl;
+       // cout << "Max in BST Rid of Recursion: " << findMaxInBSTRidOfRecursion(ROOT) << endl;
        // cout << "\n";
        // cout << "LNR Rid of Recursion: "
        //      << "\n";
