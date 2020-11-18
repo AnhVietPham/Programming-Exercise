@@ -115,17 +115,23 @@ void outListStudent(LISTSTUDENT ls)
 
 int countStudentsPassesExam(STUDENT *pHEAD, float standardScore)
 {
+       int count = 0;
        for (STUDENT *p = pHEAD; p != NULL; p = p->student)
        {
-              
+              if (p->oneSubjectScore >= standardScore && p->twoSubjectScore >= standardScore && p->english == true)
+              {
+                     count++;
+              }
        }
+       return count;
 }
 
 int main()
 {
        LISTSTUDENT LS;
-       int n = 3;
+       int n = 5;
        inputListStudent(LS, n);
        outListStudent(LS);
+       cout << "The quantity of Student passes exam: " << countStudentsPassesExam(LS.pHEAD, 5);
        return 0;
 }
