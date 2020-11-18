@@ -66,26 +66,26 @@ void inputListStudent(LISTSTUDENT &ls, int n)
        for (int i = 0; i < n; i++)
        {
               STUDENT *S = new STUDENT;
-              string name;
-              string candidateNumber;
-              float oneSubjectScore;
-              float twoSubjectScore;
-              bool isEnglish;
-              fflush(stdin);
-              cout << "\nStudent " << i << " :" << endl;
-              cout << "===> Name: ";
-              cin >> name;
-              fflush(stdin);
-              cout << "\n===> Candidate Number: ";
-              cin >> candidateNumber;
-              fflush(stdin);
-              cout << "\n===> One Subject Score: ";
-              cin >> oneSubjectScore;
-              fflush(stdin);
-              cout << "\n===> Two Subject Score: ";
-              cin >> twoSubjectScore;
-              cout << "\n===> English: ";
-              cin >> isEnglish;
+              string name = "A1";
+              string candidateNumber = "101";
+              float oneSubjectScore = 5;
+              float twoSubjectScore = 6;
+              bool isEnglish = 1;
+              // fflush(stdin);
+              // cout << "\nStudent " << i << " :" << endl;
+              // cout << "===> Name: ";
+              // cin >> name;
+              // fflush(stdin);
+              // cout << "\n===> Candidate Number: ";
+              // cin >> candidateNumber;
+              // fflush(stdin);
+              // cout << "\n===> One Subject Score: ";
+              // cin >> oneSubjectScore;
+              // fflush(stdin);
+              // cout << "\n===> Two Subject Score: ";
+              // cin >> twoSubjectScore;
+              // cout << "\n===> English: ";
+              // cin >> isEnglish;
               createStudent(S, name, candidateNumber, oneSubjectScore, twoSubjectScore, isEnglish);
               addStudent(ls, S);
        }
@@ -126,6 +126,28 @@ int countStudentsPassesExam(STUDENT *pHEAD, float standardScore)
        return count;
 }
 
+float findStandardScore(STUDENT *pHEAD, int target)
+{
+       int count[20] = {0};
+       for (STUDENT *p = pHEAD; p != NULL; p = p->student)
+       {
+              if (p->oneSubjectScore >= 5 && p->twoSubjectScore >= 5 && p->english == true)
+              {
+                     float totalScore = p->oneSubjectScore + p->twoSubjectScore;
+                     int index = (totalScore - 10) * 2;
+                     count[index]++;
+              }
+       }
+
+       int i = 19;
+       while (target >= 0 && i > 0)
+       {
+              target = target - count[i];
+              i--;
+       }
+       return ((1.0 * (i)) / 2) + 11;
+}
+
 int main()
 {
        LISTSTUDENT LS;
@@ -133,5 +155,6 @@ int main()
        inputListStudent(LS, n);
        outListStudent(LS);
        cout << "The quantity of Student passes exam: " << countStudentsPassesExam(LS.pHEAD, 5);
+       cout << "\nStandard Score: " << findStandardScore(LS.pHEAD, 20);
        return 0;
 }
