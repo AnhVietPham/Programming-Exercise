@@ -373,6 +373,26 @@ int binarySearch(vector<int> arr, int left, int right, int x)
        }
 }
 
+void checkBST(NODE *ROOT, bool &isBST, int data = INT32_MIN)
+{
+       if (ROOT != NULL)
+       {
+              checkBST(ROOT->left, isBST, data);
+              if (ROOT->data > data && isBST == true)
+              {
+                     data = ROOT->data;
+                     isBST = true;
+              }
+              else
+              {
+                     data = ROOT->data;
+                     isBST = false;
+                     return;
+              }
+              checkBST(ROOT->right, isBST, data);
+       }
+}
+
 void GiaiPhongCay_DeQuy(NODE *&Root)
 {
        if (Root != NULL)
@@ -389,31 +409,39 @@ int main()
 {
        NODE *ROOT;
        NODE *ROOT1;
+       bool isBST = true;
+       // ROOT1 = createNode(20);
+       // ROOT1->left = createNode(10);
+       // ROOT1->right = createNode(21);
+       // ROOT1->left->right = createNode(13);
+       // ROOT1->right->left = createNode(13);
        int a[] = {40, 5, 35, 45, 15, 56, 48, 13, 16, 49, 47};
-       // int a[] = {50, 30, 100, 20, 40, 35, 45, 37};
+       // // int a[] = {50, 30, 100, 20, 40, 35, 45, 37};
        int n = sizeof(a) / sizeof(a[0]);
-       vector<int> arr;
-       int x = 59;
-       int y = 89;
-       bool isAddX = false;
-       bool isAddY = false;
+       // vector<int> arr;
+       // int x = 59;
+       // int y = 89;
+       // bool isAddX = false;
+       // bool isAddY = false;
        createBST(ROOT, a, n);
-       convertFromBSTToArray(ROOT, arr, x, y, isAddX, isAddY);
-       if (isAddX == false && isAddY == false)
-       {
-              arr.push_back(x);
-              arr.push_back(y);
-              isAddX = true;
-              isAddY = true;
-       }
+       // convertFromBSTToArray(ROOT, arr, x, y, isAddX, isAddY);
+       // if (isAddX == false && isAddY == false)
+       // {
+       //        arr.push_back(x);
+       //        arr.push_back(y);
+       //        isAddX = true;
+       //        isAddY = true;
+       // }
 
-       outPutVector(arr);
-       cout << endl;
-       int indexOfX = binarySearch(arr, 0, arr.size() - 1, x);
-       int indexOfY = binarySearch(arr, 0, arr.size() - 1, y);
-       cout << "Index of X in arr: " << indexOfX << endl;
-       cout << "Index of Y in arr: " << indexOfY << endl;
-       cout << "Quantity of number in [X,Y] " << indexOfY - indexOfX + 1 - 2;
+       // outPutVector(arr);
+       // cout << endl;
+       // int indexOfX = binarySearch(arr, 0, arr.size() - 1, x);
+       // int indexOfY = binarySearch(arr, 0, arr.size() - 1, y);
+       // cout << "Index of X in arr: " << indexOfX << endl;
+       // cout << "Index of Y in arr: " << indexOfY << endl;
+       // cout << "Quantity of number in [X,Y] " << indexOfY - indexOfX + 1 - 2;
+       checkBST(ROOT, isBST);
+       cout << "Check BST: " << isBST;
        // createBSTRidOfRecursion(ROOT1, a, n);
        // // cout << "NLR: "
        // //      << "\n";
