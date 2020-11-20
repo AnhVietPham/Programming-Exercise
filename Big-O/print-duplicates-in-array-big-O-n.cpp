@@ -26,7 +26,7 @@ void print_duplicates_in_array_BigO_n(int a[], int n)
 
 int main()
 {
-       int a[] = {5, 3, 5, 1, 5, 3};
+       int a[] = { };
        int n = sizeof(a) / sizeof(a[0]);
        print_duplicates_in_array_BigO_n(a, n);
        return 0;
